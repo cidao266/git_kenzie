@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pedra, papel ou tesoura</title>
+</head>
+<body>
+    <h2>pedra, papel ou tesoura</h2>
+
+    <select>
+        <option>pedra</option>
+        <option>papel</option>
+        <option>tesoura</option>
+    </select>
+
+    <button onclick="jogar()">jogar</button>
+
+    <h4></h4>
+    <p></p>
+
+    <script>
+    function jogar() {
+         const computador = numeroAleatorio(0, 2);
+         const jogador = document.querySelector("select").selectedIndex;
+         if ((computador == 0 && jogador == 2) || 
+             (computador == 1 && jogador == 0) ||
+             (computador == 2 && jogador == 1)) {
+                resultado("você perdeu!", computador);
+             } else if (computador == jogador) {
+                resultado("empate.", computador);
+             } else {
+                resultado("você venceu!", computador);
+             }
+    }
+
+       function resultado(mensagem, computador) {
+        const opcoes = ['pedra', 'papel', 'tesoura']
+           document.querySelector("h4").innerHTML = mensagem;
+           document.querySelector("p").innerHTML = 'o computador escolheu ' + opcoes[computador];
+       }
+    
+
+     function numeroAleatorio(min, max) {
+        return (Math.random() * (max -min) + min).toFixed()
+     }
+    </script>
+    </body>
+    </body>
+</body>
+</html>
